@@ -9,6 +9,16 @@
  */
 
 // 模拟 Vue2 响应式系统
+
+对于v2来说，首先要介绍几个概念：
+dep：依赖收集器，一个set类型对象，其内存放一个响应式对象的一个属性的所有依赖
+watcher：观察者，当数据变化时，执行更新
+
+遍历对象的所有属性，通过使用Object.defineProperty，对对象的每个属性进行响应式处理
+每个属性对应一个dep，用于依赖收集
+访问响应式数据时，会触发getter，收集当前watcher作为依赖到dep中
+更新数据时，会触发setter，通知所有依赖更新
+
 function defineReactive(obj, key, val) {
   // 如果值是对象，需要递归处理
   if (typeof val === 'object' && val !== null) {
@@ -116,6 +126,18 @@ data.newProp = 'test'; // 不会触发任何响应
  */
 
 // 模拟 Vue3 的 reactive 函数
+对于vue3，首先要介绍几个概念：
+targetsMap：一个weakmap类型对象，其内存放多个对象及其所有依赖
+depsMap：一个map类型对象，其内存放一个响应式对象的多个属性及其所有依赖
+dep：一个set类型对象，其内存放一个响应式对象的一个属性的所有依赖
+
+对对象的响应式处理，首先要创建一个Proxy对象，代理get、set、deleteProperty方法
+get方法：在获取属性值时，执行track方法，收集依赖
+set方法：在设置属性值时，执行trigger方法，触发更新
+deleteProperty方法：在删除属性时，执行trigger方法，触发更新
+
+除此之外还要用es6新增的reflect对象，完成其原生操作。
+
 function reactive(target) {
   if (typeof target !== 'object' || target === null) return target;
   
