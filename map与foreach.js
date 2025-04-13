@@ -1,0 +1,4 @@
+map与foreach的区别：
+map有返回值，foreach没有返回值
+map常用来做数据转换，foreach常用来做数据遍历
+他俩都没法用break和continue，但可以用return来模拟continue，用throw来模拟break

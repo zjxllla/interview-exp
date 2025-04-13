@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+
+        /* 方法一：border-image */
+      .gradient-border {
+        width: 200px;
+        height: 200px;
+        border: 4px solid; /* 边框宽度 */
+        border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4) 1; /* 渐变 + slice值 */
+        border-image-slice: 1; /* 确保整个边框区域填充渐变 */
+        background: white; /* 内容背景色 */
+      }
+
+      /*-----------------------------------------------*/
+      /* 方法二  伪元素加绝对定位元素宽高计算*/
+      .pseudo-border {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        background: white; /* 内容背景 */
+        border-radius: 12px; /* 支持圆角 */
+      }
+
+      .pseudo-border::before {
+        content: "";
+        position: absolute;
+        top: -2px; /* 边框宽度 */
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        z-index: -1;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        border-radius: 14px; /* 圆角略大，避免被裁剪 */
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="box gradient-border"></div>
+    <div class="box pseudo-border"></div>
+  </body>
+</html>

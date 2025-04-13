@@ -1,0 +1,51 @@
+1. 绝对定位+transform
+.parent {
+    position: relative;
+  }
+  .child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+2. 绝对定位+margin
+.parent {
+    position: relative;
+  }
+ .child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+
+3.flex布局
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+4. grid布局
+.parent {
+    display: grid;
+    place-items: center; /* 同时水平垂直居中 */
+  }
+
+
+5.表格布局
+.parent {
+    display: table;
+  }
+  .child {
+    display: table-cell;
+    vertical-align: middle; /* 垂直居中 */
+    text-align: center;     /* 水平居中 */
+  }
+  /* 内部元素包裹内容 */
+  .inner {
+    display: inline-block;
+  }
