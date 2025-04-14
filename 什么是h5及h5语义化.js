@@ -10,5 +10,5 @@ h5：
 
 
 
-语义化：使用合乎人类语言的标签，如nav、header、footer、article、section
+语义化：使用合乎人类语言的标签，如nav、header、footer、article、section 就是用正确的标签做正确的事
         利于seo、无障碍解析及维护
