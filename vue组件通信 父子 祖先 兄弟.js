@@ -34,4 +34,4 @@ vue2：$parent
 vue2：$children
 
 vue2：$ref
-vue3：defineExpose、ref
+vue3：defineExpose与ref
